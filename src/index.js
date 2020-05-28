@@ -63,22 +63,6 @@ class Game extends React.Component {
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
-    const calcPosition = (arg) => {
-      const rows = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-      ];
-      for(let n = 0; n < rows.length; n++) {
-        if (rows[n].indexOf(arg) !== -1) {
-          return {
-            column: rows[n].indexOf(arg) + 1,
-            row: n + 1,
-          };
-        }
-      }
-    };
-
     const position = calcPosition(i);
 
     if (calculateWinner(squares) || squares[i]) {
@@ -179,4 +163,20 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+function calcPosition(arg) {
+  const rows = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+  ];
+  for(let n = 0; n < rows.length; n++) {
+    if (rows[n].indexOf(arg) !== -1) {
+      return {
+        column: rows[n].indexOf(arg) + 1,
+        row: n + 1,
+      };
+    }
+  }
 }
